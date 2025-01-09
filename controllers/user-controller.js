@@ -17,15 +17,26 @@ const userController = {
   // Get single user by id
   async getUserById(req, res) {
     try {
+      if (!req.params.userId) {
+        return res.status(400).json({ message: 'User ID is required' });
+      }
+      
       const user = await User.findById(req.params.userId)
         .populate('thoughts')
-        .populate('friends');
+        .populate('friends')
+        .select('-__v');
+        
       if (!user) {
-        return res.status(404).json({ message: 'No user with this id!' });
+        return res.status(404).json({ message: 'No user found with this id!' });
       }
+      
       res.json(user);
     } catch (err) {
-      res.status(500).json(err);
+      console.error('Error in getUserById:', err);
+      res.status(500).json({ 
+        message: 'Internal server error',
+        error: err.message 
+      });
     }
   },
 

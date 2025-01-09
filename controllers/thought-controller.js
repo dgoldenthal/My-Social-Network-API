@@ -94,17 +94,26 @@ const thoughtController = {
   // Remove reaction
   async removeReaction(req, res) {
     try {
+      console.log('Removing reaction with _id:', req.params.reactionId);
       const thought = await Thought.findByIdAndUpdate(
         req.params.thoughtId,
-        { $pull: { reactions: { reactionId: req.params.reactionId } } },
+        { $pull: { reactions: { _id: req.params.reactionId } } },
         { new: true }
       );
+
       if (!thought) {
-        return res.status(404).json({ message: 'No thought with this id!' });
+        console.log('Thought not found');
+        return res.status(404).json({ message: 'No thought found with this id!' });
       }
+
+      console.log('Updated thought:', thought);
       res.json(thought);
     } catch (err) {
-      res.status(400).json(err);
+      console.error('Error in removeReaction:', err);
+      res.status(500).json({ 
+        message: 'Internal server error',
+        error: err.message 
+      });
     }
   },
 };
