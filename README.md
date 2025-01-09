@@ -115,8 +115,8 @@ npm run dev
 - `POST /api/users` - Create a new user
   ```json
   {
-    "username": "lernantino",
-    "email": "lernantino@gmail.com"
+    "username": "daniel",
+    "email": "daniel@gmail.com"
   }
   ```
 - `PUT /api/users/:userId` - Update a user
@@ -133,7 +133,7 @@ npm run dev
   ```json
   {
     "thoughtText": "Here's a cool thought...",
-    "username": "lernantino",
+    "username": "daniel",
     "userId": "5edff358a0fcb779aa7b118b"
   }
   ```
