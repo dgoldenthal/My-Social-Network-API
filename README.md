@@ -168,3 +168,20 @@ All API routes can be tested using Insomnia or similar API testing tools. Make s
    - 404: Not found
    - 400: Bad request
    - 500: Server error
+
+
+## Demo
+
+Check out the walkthrough video demonstrating the API functionality:
+
+[Social Media API Walkthrough Video](https://youtu.be/QfU6DdkCBo0)
+
+The video demonstrates:
+- Starting the application's server
+- Testing GET routes for all users and thoughts
+- Testing GET routes for single users and thoughts
+- Testing POST, PUT, and DELETE routes for users and thoughts
+- Testing POST and DELETE routes for user's friend lists
+- Testing POST and DELETE routes for reactions to thoughts
+- Verifying all technical acceptance criteria are met
+
